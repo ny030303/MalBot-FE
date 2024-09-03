@@ -59,8 +59,16 @@ const StyledButton = styled.button<Button1Props>`
 `;
 
 /**
- * Button1 컴포넌트
- * @param {Button1Props} props - 컴포넌트에 전달되는 props
+ * Button1 컴포넌트 - 커스터마이징 가능한 버튼 컴포넌트
+ * @param {Button1Props} props - Button1 컴포넌트에 전달되는 props
+ * @param {string} [props.bgColor='#617AFA'] - 버튼의 배경 색상 (선택적, 기본값: '#617AFA')
+ * @param {string} [props.textColor='#fff'] - 버튼의 텍스트 색상 (선택적, 기본값: '#fff')
+ * @param {number} [props.height=40] - 버튼의 높이 (선택적, 기본값: 40)
+ * @param {number} [props.width=120] - 버튼의 너비 (선택적, 기본값: 120)
+ * @param {number} [props.fontSize=16] - 버튼의 글꼴 크기 (선택적, 기본값: 16)
+ * @param {React.ReactNode} [props.children='Start'] - 버튼에 표시될 텍스트 (선택적, 기본값: 'Start')
+ * @param {boolean} [props.disabled=false] - 버튼 비활성화 여부 (선택적, 기본값: false)
+ * @param {() => void} [props.onClick] - 버튼 클릭 시 호출될 함수
  * @returns {JSX.Element} 버튼 컴포넌트
  */
 const Button1: React.FC<Button1Props> = ({
