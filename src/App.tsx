@@ -3,6 +3,7 @@ import "./App.css";
 import GlobalStyles from "./GlobalStyled";
 import Button1 from "./components/Button/Button1";
 import TutorialCard from "./components/Card/TutorialCard";
+import Tag from "./components/Tag/Tag";
 
 function App() {
   const handleStartClick = () => {
@@ -20,6 +21,7 @@ function App() {
         buttonText="Start"
         onClick={handleStartClick}
       />
+      <Tag />
     </div>
   );
 }
