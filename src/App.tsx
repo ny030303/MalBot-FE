@@ -10,7 +10,11 @@ import ProfileCard from "./components/Card/ProfileCard";
 import ChatBubble from "./components/Bubble/ChatBubble";
 import VoiceMessageBox from "./components/Card/VoiceMessageCard";
 import VoiceMessageCard from "./components/Card/VoiceMessageCard";
-
+const progressData = [
+  { label: "속도", value: 35, max: 50, color: "#4a90e2" },
+  { label: "발음", value: 50, max: 100, color: "#f5a623" },
+  { label: "억양", value: 150, max: 500, color: "#f8e71c" },
+];
 function App() {
   const handleStartClick = () => {
     console.log("Start button clicked!");
@@ -52,16 +56,18 @@ function App() {
         isMine={true} 
       />
      <VoiceMessageCard
-  imageUrl="./images/sound-waves-7409203_1280.jpg"
-  title="Voice Message"
-  sender="Mike"
-  currentTime="2:15"
-  totalTime="4:30"
-  onPlay={() => console.log('재생')}
-  onSeekBack={() => console.log('15초 뒤로')}
-  onSeekForward={() => console.log('15초 앞으로')}
-/>
+      imageUrl="./images/sound-waves-7409203_1280.jpg"
+      title="Voice Message"
+      sender="Mike"
+      currentTime="2:15"
+      totalTime="4:30"
+      onPlay={() => console.log('재생')}
+      onSeekBack={() => console.log('15초 뒤로')}
+      onSeekForward={() => console.log('15초 앞으로')}
+    />
 
+
+  <FeedbackCard message="아직이요, 사라. 이번 주말에 볼 계획이에요." progressData={progressData} />;
 
 
     </div>

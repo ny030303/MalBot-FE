@@ -16,7 +16,7 @@ interface HeaderBarProps {
  * @param {() => void} props.onToggleClick - 토글 버튼 클릭 시 호출될 함수
  * @returns {JSX.Element} HeaderBar 컴포넌트
  */
-const HeaderBar: React.FC<HeaderBarProps> = ({ title, onBackClick, onToggleClick }) => {
+const HeaderBar: React.FC<HeaderBarProps> = ({ title, onBackClick, onToggleClick }: HeaderBarProps): JSX.Element => {
   return (
     <HeaderContainer>
       <IconButton onClick={onBackClick}>

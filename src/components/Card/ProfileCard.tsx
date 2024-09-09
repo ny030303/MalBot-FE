@@ -15,7 +15,7 @@ interface ProfileCardProps {
  * @param {string} props.status - 사용자 상태 (예: "Online", "Offline")
  * @returns {JSX.Element} ProfileCard 컴포넌트
  */
-const ProfileCard: React.FC<ProfileCardProps> = ({ imageUrl, userName, status }) => {
+const ProfileCard: React.FC<ProfileCardProps> = ({ imageUrl, userName, status }: ProfileCardProps): JSX.Element => {
   return (
     <CardContainer>
       <ProfileImage src={imageUrl} alt={`${userName} 프로필 이미지`} />

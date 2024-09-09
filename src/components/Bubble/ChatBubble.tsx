@@ -17,7 +17,7 @@ interface ChatBubbleProps {
  * @param {boolean} props.isMine - 메시지가 내 메시지인지 여부를 나타냄
  * @returns {JSX.Element} ChatBubble 컴포넌트
  */
-const ChatBubble: React.FC<ChatBubbleProps> = ({ message, userName, userImage, isMine }) => {
+const ChatBubble: React.FC<ChatBubbleProps> = ({ message, userName, userImage, isMine }: ChatBubbleProps): JSX.Element => {
   return (
     <ChatContainer isMine={isMine}>
       {!isMine && <UserImage src={userImage} alt={`${userName} 프로필`} />}
