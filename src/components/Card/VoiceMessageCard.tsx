@@ -98,10 +98,13 @@ const CardContainer = styled.div`
   background-color: #f5f7fa;
   border-radius: 12px;
   padding: 15px;
-  width: 100%;
-  max-width: 400px;
-  margin:12px 16px;
+  /* width: 100%; */
+  /* max-width: 400px; */
+  margin: 12px 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  bottom: 0;
+  width: -webkit-fill-available;
 `;
 
 const Thumbnail = styled.img`

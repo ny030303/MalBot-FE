@@ -1,18 +1,18 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import FeedbackDetailCard from "./FeedbackDetailCard";
 const corrections = [
-    { type: "문법 오류", correction: `"이것" → "이는"` },
-    { type: "표현 개선", correction: `"린 문장도" → "문법에 오류가 있는"` },
+  { type: "문법 오류", correction: `"이것" → "이는"` },
+  { type: "표현 개선", correction: `"린 문장도" → "문법에 오류가 있는"` },
 ];
 
 const generalFeedback = "전반적으로 좋은 시도였습니다. 몇 가지 작은 문법 오류를 수정하면 더 자연스러운 표현이 될 것 같습니다.";
 // ProgressBarProps 인터페이스 정의
 interface ProgressBarProps {
-    label: string; // 항목 이름
-    value: number; // 실제 값
-    max: number;   // 최대 값
-    color: string; // 색상
+  label: string; // 항목 이름
+  value: number; // 실제 값
+  max: number;   // 최대 값
+  color: string; // 색상
 }
 
 /**
@@ -25,27 +25,27 @@ interface ProgressBarProps {
  * @returns {JSX.Element} ProgressBar 컴포넌트
  */
 const ProgressBar: React.FC<ProgressBarProps> = ({ label, value, max, color }) => {
-    const percentage = (value / max) * 100; // 퍼센트 계산
+  const percentage = (value / max) * 100; // 퍼센트 계산
 
-    return (
-        <ProgressContainer>
-            <Label>{label}</Label>
-            <BarContainer>
-                <FilledBar style={{ width: `${percentage}%`, backgroundColor: color, borderRadius: "999px" }} />
-                <EmptyBar />
-            </BarContainer>
-            <Values>
-                <Value>{value}</Value>
-                <Percentage>{Math.round(percentage)}%</Percentage>
-            </Values>
-        </ProgressContainer>
-    );
+  return (
+    <ProgressContainer>
+      <Label>{label}</Label>
+      <BarContainer>
+        <FilledBar style={{ width: `${percentage}%`, backgroundColor: color, borderRadius: "999px" }} />
+        <EmptyBar />
+      </BarContainer>
+      <Values>
+        <Value>{value}</Value>
+        <Percentage>{Math.round(percentage)}%</Percentage>
+      </Values>
+    </ProgressContainer>
+  );
 };
 
 // FeedbackCardProps 인터페이스 정의
 interface FeedbackCardProps {
-    message: string; // 메시지
-    progressData: { label: string; value: number; max: number; color: string }[]; // 진행바 데이터
+  message: string; // 메시지
+  progressData: { label: string; value: number; max: number; color: string }[]; // 진행바 데이터
 }
 
 /**
@@ -56,27 +56,35 @@ interface FeedbackCardProps {
  * @returns {JSX.Element} FeedbackCard 컴포넌트
  */
 const FeedbackCard: React.FC<FeedbackCardProps> = ({ message, progressData }) => {
-    return (
-        <CardContainer>
-            <Handle />
-            <Title>Feedback</Title>
-            <Message>{message}</Message>
-            {progressData.map((data, index) => (
-                <ProgressBar
-                    key={index}
-                    label={data.label}
-                    value={data.value}
-                    max={data.max}
-                    color={data.color}
-                />
-            ))}
-            <FeedbackDetailCard corrections={corrections} generalFeedback={generalFeedback} />
-        </CardContainer>
-    );
+  return (
+    <CardContainer>
+      <Handle />
+      <Title>Feedback</Title>
+      <Message>{message}</Message>
+      {progressData.map((data, index) => (
+        <ProgressBar
+          key={index}
+          label={data.label}
+          value={data.value}
+          max={data.max}
+          color={data.color}
+        />
+      ))}
+      <FeedbackDetailCard corrections={corrections} generalFeedback={generalFeedback} />
+    </CardContainer>
+  );
 };
 
 export default FeedbackCard;
-
+// 슬라이드 애니메이션 정의
+const slideUp = keyframes`
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+`;
 // 스타일 컴포넌트 정의
 
 /**
@@ -103,7 +111,11 @@ const CardContainer = styled.div`
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   font-family: Arial, sans-serif;
-  position: relative;
+  // position: relative;
+  
+  animation: ${slideUp} 0.3s ease-out;
+  position: absolute;
+  z-index: 1;
 `;
 
 /**
