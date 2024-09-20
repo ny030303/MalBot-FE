@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import HeaderBar from "../components/Header/HeaderBar";
 import ProfileCard from "../components/Card/ProfileCard";
 import ChatBubble from "../components/Bubble/ChatBubble";
 import VoiceMessageCard from "../components/Card/VoiceMessageCard";
+import BottomSheetCard from "../components/Card/BottomSheetCard";
 
 /**
  * Home 컴포넌트 - 홈페이지를 렌더링
  * @returns {JSX.Element} 홈페이지 컴포넌트
  */
 const ReplayDetail: React.FC = () => {
+  
   return (
     <ReplayDetailContainer>
       <HeaderBar
@@ -53,4 +55,8 @@ export default ReplayDetail;
 const ReplayDetailContainer = styled.div`
   position: relative;
   height: 100vh;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
 `;

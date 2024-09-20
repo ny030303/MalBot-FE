@@ -57,8 +57,7 @@ interface FeedbackCardProps {
  */
 const FeedbackCard: React.FC<FeedbackCardProps> = ({ message, progressData }) => {
   return (
-    <CardContainer>
-      <Handle />
+    <>
       <Title>Feedback</Title>
       <Message>{message}</Message>
       {progressData.map((data, index) => (
@@ -71,52 +70,11 @@ const FeedbackCard: React.FC<FeedbackCardProps> = ({ message, progressData }) =>
         />
       ))}
       <FeedbackDetailCard corrections={corrections} generalFeedback={generalFeedback} />
-    </CardContainer>
+    </>
   );
 };
 
 export default FeedbackCard;
-// 슬라이드 애니메이션 정의
-const slideUp = keyframes`
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-`;
-// 스타일 컴포넌트 정의
-
-/**
- * Handle 컴포넌트 - 상단에 위치한 드래그 핸들 스타일
- */
-const Handle = styled.div`
-    position: absolute;
-    left: 50%;
-    top: 9px;
-    translate: -50% -0%;
-    width: 40px;
-    height: 4px;
-    border-radius: 999px;
-    opacity: 1;
-    background: #91929F;
-`;
-
-/**
- * CardContainer 컴포넌트 - FeedbackCard의 전체 카드 컨테이너
- */
-const CardContainer = styled.div`
-  padding: 40px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
-  // position: relative;
-  
-  animation: ${slideUp} 0.3s ease-out;
-  position: absolute;
-  z-index: 1;
-`;
 
 /**
  * Title 컴포넌트 - 카드의 제목 스타일

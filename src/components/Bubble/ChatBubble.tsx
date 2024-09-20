@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
 import FeedbackCard from "../Card/FeedbackCard";
+import BottomSheetCard from "../Card/BottomSheetCard";
 
 interface ChatBubbleProps {
   message: string;
@@ -26,6 +27,7 @@ const progressData = [
 const ChatBubble: React.FC<ChatBubbleProps> = ({ message, userName, userImage, isMine }: ChatBubbleProps): JSX.Element => {
   const [isDetailVisible, setDetailVisible] = useState(false);
 
+  const [isSheetOpen, setSheetOpen] = useState(false);
   // 클릭 시 상세 정보 창을 토글
   const handleBubbleClick = () => {
     setDetailVisible((prev) => !prev);
@@ -33,7 +35,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({ message, userName, userImage, i
 
   return (
     <>
-      <ChatContainer isMine={isMine} onClick={handleBubbleClick}>
+      <ChatContainer isMine={isMine} onClick={() => setSheetOpen(true)}>
         {!isMine && <UserImage src={userImage} alt={`${userName} 프로필`} />}
         <MessageContainer isMine={isMine}>
           <UserName isMine={isMine}>{userName}</UserName>
@@ -43,18 +45,10 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({ message, userName, userImage, i
       </ChatContainer>
 
       {/* 클릭 시 바닥에서 올라오는 상세 정보 창 */}
-      {isDetailVisible && (
-        // <DetailContainer>
-        //   <DetailContent>
-        //     <h3>{userName}의 메시지</h3>
-        //     <p>{message}</p>
-        //   </DetailContent>
-          
-          
-        //   {/* <CloseButton onClick={() => setDetailVisible(false)}>닫기</CloseButton> */}
-        // </DetailContainer>
+
+      <BottomSheetCard isOpen={isSheetOpen} onClose={() => setSheetOpen(false)}>
         <FeedbackCard message={message} progressData={progressData} />
-      )}
+      </BottomSheetCard>
     </>
   );
 };
