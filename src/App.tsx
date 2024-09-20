@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import ReplayDetail from "./pages/ReplayDetail";
+import SearchDetail from "./pages/SearchDetail";
 function App() {
 
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search/*" element={<Search />} />
+          <Route path="/search/detail/*" element={<SearchDetail />} />
           <Route path="/replay/detail/*" element={<ReplayDetail />} />
         </Routes>
       </BrowserRouter>
